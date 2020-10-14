@@ -20,7 +20,7 @@ type LoggerInterface interface {
 
 ## 2. Formatters
 
-All log messages can be decorated by formatters. For this moment they are two default formatters available:
+All log messages can be decorated by formatters. For this moment there are two default formatters available:
 - time
 - significance 
 
