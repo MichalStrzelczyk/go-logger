@@ -11,12 +11,14 @@ func (logger *ConsoleLogger) IsAsync() bool {
 }
 
 func (logger *ConsoleLogger) Info(message string) error {
-	fmt.Println(message)
-
-	return nil
+	return logger.log(message)
 }
 
 func (logger *ConsoleLogger) Critical(message string) error {
+	return logger.log(message)
+}
+
+func (logger *ConsoleLogger) log(message string) error {
 	fmt.Println(message)
 
 	return nil
