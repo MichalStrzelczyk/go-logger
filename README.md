@@ -12,11 +12,11 @@ Three logging adapters are available to use:
 If you want to create your own adapter, you can do it by implementing `AdapterInterface`
 ```
 type LoggerInterface interface {
-	IsAsync() bool
+    IsAsync() bool
     Debug(message string) error
-	Info(message string) error
+    Info(message string) error
     Warning(message string) error
-	Critical(message string) error
+    Critical(message string) error
 }
 ```  
 
