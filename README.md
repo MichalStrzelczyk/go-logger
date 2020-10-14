@@ -1,6 +1,6 @@
 # Logger
 
-This library is used for simple logging of messages to several sources.
+This library can be used for simple logging of messages to several sources.
 
 ## 1. Adapters
 
@@ -13,7 +13,9 @@ If you want to create your own adapter, you can do it by implementing `AdapterIn
 ```
 type LoggerInterface interface {
 	IsAsync() bool
+    Debug(message string) error
 	Info(message string) error
+    Warning(message string) error
 	Critical(message string) error
 }
 ```  
@@ -46,7 +48,7 @@ An example log message with formatters:
 package main
 
 import (
-	myLogger "github.com/digitalfarm/logger"
+	myLogger "github.com/MichalStrzelczyk/go-logger"
 )
 
 func main() {

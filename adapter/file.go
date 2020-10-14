@@ -16,6 +16,14 @@ func (logger *FileLogger) Info(message string) error {
 	return logger.log(message)
 }
 
+func (logger *FileLogger) Debug(message string) error {
+	return logger.log(message)
+}
+
+func (logger *FileLogger) Warning(message string) error {
+	return logger.log(message)
+}
+
 func (logger *FileLogger) Critical(message string) error {
 	return logger.log(message)
 }

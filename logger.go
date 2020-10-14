@@ -7,11 +7,15 @@ import (
 )
 
 const INFO = "info"
+const DEBUG = "debug"
+const WARNING = "warning"
 const CRITICAL = "critical"
 
 type LoggerInterface interface {
 	IsAsync() bool
+	Debug(message string) error
 	Info(message string) error
+	Warning(message string) error
 	Critical(message string) error
 }
 
@@ -47,6 +51,38 @@ func (loggerManager *LoggerManager) Info(message string) error {
 			go logAdapter.Info(message)
 		} else {
 			err := logAdapter.Info(message)
+			if err != nil {
+				return err
+			}
+		}
+	}
+
+	return nil
+}
+
+func (loggerManager *LoggerManager) Debug(message string) error {
+	message = loggerManager.Format(message, DEBUG)
+	for _, logAdapter := range loggerManager.Adapters {
+		if logAdapter.IsAsync() == true {
+			go logAdapter.Debug(message)
+		} else {
+			err := logAdapter.Debug(message)
+			if err != nil {
+				return err
+			}
+		}
+	}
+
+	return nil
+}
+
+func (loggerManager *LoggerManager) Warning(message string) error {
+	message = loggerManager.Format(message, WARNING)
+	for _, logAdapter := range loggerManager.Adapters {
+		if logAdapter.IsAsync() == true {
+			go logAdapter.Warning(message)
+		} else {
+			err := logAdapter.Warning(message)
 			if err != nil {
 				return err
 			}

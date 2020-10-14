@@ -14,6 +14,14 @@ func (logger *ConsoleLogger) Info(message string) error {
 	return logger.log(message)
 }
 
+func (logger *ConsoleLogger) Debug(message string) error {
+	return logger.log(message)
+}
+
+func (logger *ConsoleLogger) Warning(message string) error {
+	return logger.log(message)
+}
+
 func (logger *ConsoleLogger) Critical(message string) error {
 	return logger.log(message)
 }

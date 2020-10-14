@@ -18,6 +18,18 @@ func (logger *SyslogLogger) Info(message string) error {
 	return nil
 }
 
+func (logger *SyslogLogger) Debug(message string) error {
+	logger.Syslog.Debug(message)
+
+	return nil
+}
+
+func (logger *SyslogLogger) Warning(message string) error {
+	logger.Syslog.Warning(message)
+
+	return nil
+}
+
 func (logger *SyslogLogger) Critical(message string) error {
 	logger.Syslog.Crit(message)
 
