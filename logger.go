@@ -1,8 +1,8 @@
 package logger
 
 import (
-	"github.com/digitalfarm/logger/adapter"
-	"github.com/digitalfarm/logger/formatter"
+	"github.com/MichalStrzelczyk/go-logger/adapter"
+	"github.com/MichalStrzelczyk/go-logger/formatter"
 	"log/syslog"
 )
 
