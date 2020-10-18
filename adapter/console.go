@@ -4,29 +4,29 @@ import (
 	"fmt"
 )
 
-type ConsoleLogger struct{}
+type Console struct{}
 
-func (logger *ConsoleLogger) IsAsync() bool {
+func (logger *Console) IsAsync() bool {
 	return false
 }
 
-func (logger *ConsoleLogger) Info(message string) error {
+func (logger *Console) Info(message string) error {
 	return logger.log(message)
 }
 
-func (logger *ConsoleLogger) Debug(message string) error {
+func (logger *Console) Debug(message string) error {
 	return logger.log(message)
 }
 
-func (logger *ConsoleLogger) Warning(message string) error {
+func (logger *Console) Warning(message string) error {
 	return logger.log(message)
 }
 
-func (logger *ConsoleLogger) Critical(message string) error {
+func (logger *Console) Critical(message string) error {
 	return logger.log(message)
 }
 
-func (logger *ConsoleLogger) log(message string) error {
+func (logger *Console) log(message string) error {
 	fmt.Println(message)
 
 	return nil

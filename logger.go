@@ -20,7 +20,7 @@ type LoggerInterface interface {
 }
 
 type FormatterInterface interface {
-	Format(message string,logLevel string) string
+	Format(message string, logLevel string) string
 }
 
 type LoggerManager struct {
@@ -108,12 +108,13 @@ func (loggerManager *LoggerManager) Critical(message string) error {
 	return nil
 }
 
-func CreateLoggerManager() *LoggerManager {
-	syslogWriter, _ := syslog.Dial("", "", syslog.LOG_DEBUG, "my-log")
-	syslogLogger := adapter.SyslogLogger{syslogWriter}
-	consoleLogger := adapter.ConsoleLogger{}
-	fileLogger := adapter.FileLogger{"/tmp/aaa.log"}
+func CreateLoggerManager(projectName string, ) *LoggerManager {
+	syslogWriter, _ := syslog.Dial("", "", syslog.LOG_DEBUG, projectName)
+	syslogLogger := adapter.Syslog{syslogWriter}
+	consoleLogger := adapter.Console{}
+	fileLogger := adapter.File{"/tmp/" + projectName + ".log"}
 
+	projectNameFormatter := formatter.Name{projectName}
 	timeFormatter := formatter.Time{}
 	significanceFormatter := formatter.Significance{}
 
@@ -123,6 +124,7 @@ func CreateLoggerManager() *LoggerManager {
 	logManager.AddAdapter(&fileLogger)
 	logManager.AddFormatter(&significanceFormatter)
 	logManager.AddFormatter(&timeFormatter)
+	logManager.AddFormatter(&projectNameFormatter)
 
 	return &logManager
 }

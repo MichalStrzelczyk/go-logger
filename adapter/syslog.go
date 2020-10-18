@@ -4,33 +4,33 @@ import (
 	"log/syslog"
 )
 
-type SyslogLogger struct {
+type Syslog struct {
 	Syslog *syslog.Writer
 }
 
-func (logger *SyslogLogger) IsAsync() bool {
+func (logger *Syslog) IsAsync() bool {
 	return false
 }
 
-func (logger *SyslogLogger) Info(message string) error {
+func (logger *Syslog) Info(message string) error {
 	logger.Syslog.Info(message)
 
 	return nil
 }
 
-func (logger *SyslogLogger) Debug(message string) error {
+func (logger *Syslog) Debug(message string) error {
 	logger.Syslog.Debug(message)
 
 	return nil
 }
 
-func (logger *SyslogLogger) Warning(message string) error {
+func (logger *Syslog) Warning(message string) error {
 	logger.Syslog.Warning(message)
 
 	return nil
 }
 
-func (logger *SyslogLogger) Critical(message string) error {
+func (logger *Syslog) Critical(message string) error {
 	logger.Syslog.Crit(message)
 
 	return nil

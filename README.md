@@ -23,6 +23,7 @@ type LoggerInterface interface {
 ## 2. Formatters
 
 All log messages can be decorated by formatters. For this moment there are two default formatters available:
+- name
 - time
 - significance 
 
@@ -36,8 +37,9 @@ type FormatterInterface interface {
 
 An example log message with formatters:
 ```
-// [Time formatter]          // [significance formatter]
-[2020-10-14 06:53:33.267086] [critical] Log message
+// [Name formatter] [Time formatter] [significance formatter] error message
+[MyProject] [2020-10-18 12:45:14.106169] [critical] Jakiś tekst 
+
 ```
 
 **CAUTION** The order of the formatters does matter
